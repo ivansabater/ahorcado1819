@@ -10,6 +10,20 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        #duracion {width:100px;border:1px solid #808080;height:20px;margin:2px;}
+        #duracion,
+        #botones {padding:1px;float:left;}
+        #duracion span {width:1px;background-color:#bfbfbf;height:20px;position:absolute;}
+        #duracion div {text-align:center;position:relative;}
+        #botones {margin-left:5px;}
+        #botones button {font-size:1em;width:30px;}
+        .row {border: 5px dashed #C8FF00;border-radius: 40px;}
+        .container{background-color: red; min-height: 100vh;   }
+        html, body { margin:0; padding:0; } 
+        
+    
+    </style>
 </head>
 
 <body>
@@ -49,21 +63,90 @@
                 </div>
                 <div class="col-md-6">
                     <div class="row">
-                        <div class="col-md-12">
-                            <p>Pregunta-Frase</p>
+                        <div class="col-md-12" id = "preguntas">
+                        </div>
+                        <div class="col-md-12" id = "palabras">
                         </div>
                         <div class="col-md-12">
-                            <p>Palabras</p>
-                        </div>
-                        <div class="col-md-12">
-                            <p>Letra y Boton</p>
+                            <form>
+                                <div class="form-group row">
+                                    <label class="col-sm-3" for="">Letra:</label>
+                                    <input type="text" class="col-sm-3 form-control" name="letra" id="letra" placeholder="">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                    <button type="button" class="btn btn-primary" value="" onclick="Principal()">Comprobar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                        <audio id="miAudio" src="./Sonidos/pp.mp3"></audio>
+     
+                        <div id="duracion">
+                            <span></span>
+                            <div></div>
+                        </div>
+                     
+                        <div id="botones">
+                            <button id="iniciar" onclick="iniciar()">&#8227;</button>
+                            <button id="reiniciar" onclick="reiniciar()">&#8635;</button>
+                        </div>
+                </div>
+            </div>
         </div>
     </section>
+    
 
 </body>
 
 </html>
+<script>
+        
+    var miAudio=document.getElementById("miAudio");
+    var duracion=0;
+    var interval;
+    miAudio.ondurationchange = function() {
+        duracion=miAudio.duration;
+    }
+     
+    function iniciar()
+    {
+        if(miAudio.paused)
+        {
+            // iniciamos
+            miAudio.play();
+            interval=setInterval(mostrarDuracion,100);
+            document.getElementById("iniciar").innerHTML="&#8545;";
+        }else{
+            // paramos
+            miAudio.pause();
+            clearInterval(interval);
+            document.getElementById("iniciar").innerHTML="&#8227;";
+        }
+    }
+     
+    function reiniciar()
+    {
+        // nos posicionamos al inicio de la cancion
+        miAudio.currentTime=0;
+        if(miAudio.paused)
+        {
+            miAudio.play();
+            interval=setInterval(mostrarDuracion,100);
+        }
+    }
+     
+    function mostrarDuracion()
+    {
+        if(duracion>0)
+        {
+            porcentaje=miAudio.currentTime*100/duracion;
+            document.getElementById("duracion").getElementsByTagName("span")[0].style.width=porcentaje+"px";
+            document.getElementById("duracion").getElementsByTagName("div")[0].innerHTML=parseInt(porcentaje)+"%";
+        }
+    }
+    </script>
