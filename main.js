@@ -1,8 +1,9 @@
 function main() {
-  document.getElementById(palabra).value;
-  document.getElementById(pista).value;
-  
+  numeroAleatorio = (Math.random() * 8);
+  let palabra = generarPalabra(numeroAleatorio);
+  let pista = generarPista(numeroAleatorio);
 
+  document.getElementById('salida').innerHTML = pista;
 }
 
 function generarPalabra(palabra) {
