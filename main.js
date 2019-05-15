@@ -1,9 +1,12 @@
-function main() {
-  numeroAleatorio = (Math.random() * 8);
-  let palabra = generarPalabra(numeroAleatorio);
+
+var palabra = '';
+
+window.onload = function() {
+  let numeroAleatorio = parseInt(Math.random() * 8);
+  palabra = generarPalabra(numeroAleatorio);
   let pista = generarPista(numeroAleatorio);
 
-  document.getElementById('salida').innerHTML = pista;
+  document.getElementById('preguntas').innerHTML = pista;
 }
 
 function generarPalabra(palabra) {
@@ -30,6 +33,7 @@ function generarPalabra(palabra) {
       return "";
   }
 }
+
 function generarPista(pista) {
   switch (pista) {
     case 0:     
@@ -53,4 +57,9 @@ function generarPista(pista) {
     default:
       return "";
   }
+}
+
+function letra() {
+  let l = document.getElementById("letra").value;
+  
 }
