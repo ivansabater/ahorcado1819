@@ -40,7 +40,6 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 
-    <script src="main.js"></script>
     <section>
         <div class="container-fluid">
             <div class="row color1">
@@ -53,7 +52,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="row" >
-                        <div class="col-md-12 color">
+                        <div class="col-md-12 color" id= "imagen">
                                 <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
                         </div>
                         <div class="col-md-12 color" id = "fallos" >
@@ -77,7 +76,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12">
-                                    <button type="button" class="btn btn-primary" value="" onclick="Principal()">Comprobar</button>
+                                    <button type="button" class="btn btn-primary" value="" onclick="letra()">Comprobar</button>
                                 </div>
                             </form>
                         </div>
@@ -101,54 +100,9 @@
             </div>
         </div>
     </section>
-    
-
+    <script src="sonido.js"></script>
+    <script src="main.js"></script>
+    <script src="alvaro.js"></script>
 </body>
 
 </html>
-<script>
-        
-    var miAudio=document.getElementById("miAudio");
-    var duracion=0;
-    var interval;
-    miAudio.ondurationchange = function() {
-        duracion=miAudio.duration;
-    }
-     
-    function iniciar()
-    {
-        if(miAudio.paused)
-        {
-            // iniciamos
-            miAudio.play();
-            interval=setInterval(mostrarDuracion,100);
-            document.getElementById("iniciar").innerHTML="&#8545;";
-        }else{
-            // paramos
-            miAudio.pause();
-            clearInterval(interval);
-            document.getElementById("iniciar").innerHTML="&#8227;";
-        }
-    }
-     
-    function reiniciar()
-    {
-        // nos posicionamos al inicio de la cancion
-        miAudio.currentTime=0;
-        if(miAudio.paused)
-        {
-            miAudio.play();
-            interval=setInterval(mostrarDuracion,100);
-        }
-    }
-     
-    function mostrarDuracion()
-    {
-        if(duracion>0)
-        {
-            porcentaje=miAudio.currentTime*100/duracion;
-            document.getElementById("duracion").getElementsByTagName("span")[0].style.width=porcentaje+"px";
-            document.getElementById("duracion").getElementsByTagName("div")[0].innerHTML=parseInt(porcentaje)+"%";
-        }
-    }
-    </script>
