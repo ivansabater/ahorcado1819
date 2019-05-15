@@ -18,8 +18,8 @@
         #duracion div {text-align:center;position:relative;}
         #botones {margin-left:5px;}
         #botones button {font-size:1em;width:30px;}
-        .row {border: 5px dashed #C8FF00;border-radius: 40px;}
-        .container{background-color: red; min-height: 100vh;   }
+        .color {border: 5px dashed #C8FF00;border-radius: 40px;}
+        .container-fluid{background-color: peru; min-height: 100vh;   }
         html, body { margin:0; padding:0; } 
         
     
@@ -43,8 +43,8 @@
     <script src="main.js"></script>
     <section>
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row color1">
+                <div class="col-md-12 color">
                     <h1>
                       JUEGO DEL AHORCADO  
                     </h1>
@@ -52,25 +52,27 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+                    <div class="row" >
+                        <div class="col-md-12 color">
+                                <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
                         </div>
-                        <div class="col-md-12">
-                            <p>Fallos por tonto</p>
+                        <div class="col-md-12 color" id = "fallos" >
+                                </br></br>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
-                        <div class="col-md-12" id = "preguntas">
+                        <div class="col-md-12 color" id = "preguntas">
+                                </br></br>
                         </div>
-                        <div class="col-md-12" id = "palabras">
+                        <div class="col-md-12 color" id = "palabras" > 
+                                </br></br>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 color">
                             <form>
                                 <div class="form-group row">
-                                    <label class="col-sm-3" for="">Letra:</label>
+                                    <label class="col-sm-3" for="">Letra: </label>
                                     <input type="text" class="col-sm-3 form-control" name="letra" id="letra" placeholder="">
                                 </div>
                                 <div class="form-group row">
@@ -83,7 +85,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 color">
                         <audio id="miAudio" src="./Sonidos/pp.mp3"></audio>
      
                         <div id="duracion">
@@ -91,9 +93,9 @@
                             <div></div>
                         </div>
                      
-                        <div id="botones">
-                            <button id="iniciar" onclick="iniciar()">&#8227;</button>
-                            <button id="reiniciar" onclick="reiniciar()">&#8635;</button>
+                        <div >
+                            <button type="button" id="iniciar" class="btn btn-primary" value="" onclick="iniciar()">&#8227; </button>
+                            <button type="button" id="reiniciar" class="btn btn-primary" value="" onclick="reiniciar()">&#8635; </button>
                         </div>
                 </div>
             </div>
