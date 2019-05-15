@@ -9,6 +9,23 @@ window.onload = function() {
   document.getElementById('preguntas').innerHTML = pista;
 }
 
+
+document.getElementById("comprobar").onclick = function() {
+  let l = document.getElementById("letra").value;
+  let pos = palabra.indexOf(l, 0);
+  let solucion = "";
+  if (pos != -1) {
+    solucion = palabras;
+  } 
+}
+var num = palabra.length;
+function pintarGuiones(num) {
+  for (var i = 0; i < num; i++) {
+    oculta[i] = "_";
+  }
+  hueco.innerHTML = oculta.join("");
+}
+
 function generarPalabra(palabra) {
   switch (palabra) {
     case 0:     
@@ -59,7 +76,3 @@ function generarPista(pista) {
   }
 }
 
-function letra() {
-  let l = document.getElementById("letra").value;
-  
-}
